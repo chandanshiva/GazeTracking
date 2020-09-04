@@ -7,12 +7,12 @@ size = im.shape
 
 # 2D image points. If you change the image, you need to change vector
 image_points = np.array([
-    (359, 391),  # Nose tip
-    (399, 561),  # Chin
-    (337, 297),  # Left eye left corner
-    (513, 301),  # Right eye right corne
-    (345, 465),  # Left Mouth corner
-    (453, 469)  # Right mouth corner
+    (435, 250),  # Nose tip
+        (448, 307),  # Chin
+        (411, 227),  # Left eye left corner
+        (489, 215),  # Right eye right corne
+        (428, 276),  # Left Mouth corner
+        (473, 268)  # Right mouth corner
 ], dtype="double")
 
 # 3D model points.

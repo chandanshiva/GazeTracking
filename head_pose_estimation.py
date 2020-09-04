@@ -59,16 +59,19 @@ while True:
         y2 = face.bottom()
         # Then we can also do cv2.rectangle function (frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
         landmarks = predictor(gray, face)
-        i = [34,9,46,37,55,49]
+
         # We are then accesing the landmark points
+        i = [34, 8, 36, 45, 60, 54] #Nose tip, Chin, Left eye corner, Right eye corner, Left mouth corner, right mouth corner
+        image_points = []
         for n in i:
             x = landmarks.part(n).x
             y = landmarks.part(n).y;
-            image_points = np.array([(x,y)], dtype="double")
-            print(image_points)
+            # image_points = np.array([(x,y)], dtype="double")
+            image_points += [(x,y)]
             cv2.circle(frame, (x, y), 2, (255, 255, 0), -1)
 
-        print(image_points)
+        image_points = np.array(image_points, dtype="double")
+        # print(image_points)
         print("Camera Matrix :\n {0}".format(cam_matrix))
 
         dist_coeffs = np.zeros((4, 1))  # Assuming no lens distortion
@@ -84,17 +87,17 @@ while True:
 
         (nose_end_point2D, jacobian) = cv2.projectPoints(np.array([(0.0, 0.0, 1000.0)]), rotation_vector,
                                                          translation_vector,
-                                                         camera_matrix, dist_coeffs)
+                                                         cam_matrix, dist_coeffs)
 
         for p in image_points:
-            cv2.circle(im, (int(p[0]), int(p[1])), 3, (0, 0, 255), -1)
+            cv2.circle(frame, (int(p[0]), int(p[1])), 3, (0, 0, 255), -1)
 
         p1 = (int(image_points[0][0]), int(image_points[0][1]))
         p2 = (int(nose_end_point2D[0][0][0]), int(nose_end_point2D[0][0][1]))
 
-        cv2.line(im, p1, p2, (255, 0, 0), 2)
+        cv2.line(frame, p1, p2, (255, 0, 0), 2)
 
-        # Display image
+    # Display image
 
-        cv2.imshow("Output", im);
-        cv2.waitKey(0);
+    cv2.imshow("Output", frame)
+    cv2.waitKey(1);
