@@ -24,8 +24,6 @@ model_points = np.array([
     (150.0, -150.0, -125.0)  # Right mouth corner
 
 ])
-print(model_points)
-
 
 
 while True:
@@ -61,7 +59,7 @@ while True:
         landmarks = predictor(gray, face)
 
         # We are then accesing the landmark points
-        i = [34, 8, 36, 45, 60, 54] #Nose tip, Chin, Left eye corner, Right eye corner, Left mouth corner, right mouth corner
+        i = [33, 8, 36, 45, 48, 54] #Nose tip, Chin, Left eye corner, Right eye corner, Left mouth corner, right mouth corner
         image_points = []
         for n in i:
             x = landmarks.part(n).x
@@ -95,9 +93,10 @@ while True:
         p1 = (int(image_points[0][0]), int(image_points[0][1]))
         p2 = (int(nose_end_point2D[0][0][0]), int(nose_end_point2D[0][0][1]))
 
-        cv2.line(frame, p1, p2, (255, 0, 0), 2)
 
-    # Display image
+        cv2.line(frame, p1, p2, (255, 0, 0), 2)
+    #
+    # # Display image
 
     cv2.imshow("Output", frame)
     cv2.waitKey(1);
