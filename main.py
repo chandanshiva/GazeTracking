@@ -67,8 +67,6 @@ while True:
         center_x = int((left_pupil[0] + right_pupil[0]) / 2)
         center_y = int((left_pupil[1] + right_pupil[1]) / 2)
 
-        data = {'left_pupil': [left_pupil], 'right_pupil': [right_pupil], 'center_x': [center_x], 'center_y': [center_y]}
-
         # if 625 < center_x < 650 and 200 < center_y < 210:
         #     print("Looking at first quad", center_x, center_y)
         #
@@ -133,22 +131,26 @@ while True:
         center_nose_y = image_points[0][1]
         end_nose_x = nose_end_point2D[0][0][0]
         end_nose_y = nose_end_point2D[0][0][1]
+
         if 0 < end_nose_x < center_nose_x and 0 < end_nose_y < center_nose_y:
             print("Looking at 1st")
             cv2.putText(frame, "You are looking on 1st grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
-
+            data_list.append(['1st', left_pupil, right_pupil, (center_x,center_y), p1, p2, rotation_vector, translation_vector])
 
         elif center_nose_x < end_nose_x < (w*10) and 0 < end_nose_y < center_nose_y:
             print("looking at 2nd")
             cv2.putText(frame, "You are looking on 2nd grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
+            data_list.append(['2nd', left_pupil, right_pupil, (center_x, center_y), p1, p2, rotation_vector, translation_vector])
 
         elif 0 < end_nose_x < center_nose_x and center_nose_y < end_nose_y < (h*10):
-            print("looking at 3rd")
-            cv2.putText(frame, "You are looking on 3rd grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
-
-        else:
             print("looking at 4th")
             cv2.putText(frame, "You are looking on 4th grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
+            data_list.append(['4th', left_pupil, right_pupil, (center_x, center_y), p1, p2, rotation_vector, translation_vector])
+
+        else:
+            print("looking at 3rd")
+            cv2.putText(frame, "You are looking on 3rd grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
+            data_list.append(['3rd', left_pupil, right_pupil, (center_x, center_y), p1, p2, rotation_vector, translation_vector])
 
 
         cv2.line(frame, (0, int(center_nose_y)), (w, int(center_nose_y)), (0, 255, 0), 2)
@@ -158,11 +160,11 @@ while True:
         cv2.putText(frame, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
 
         cv2.imshow("Demo", frame)
-        # df = pd.DataFrame(data)
-        # print(df)
-        # df.to_csv('data.csv')
+
 
         if cv2.waitKey(1) == 27:
             break
-df = pd.DataFrame(data_list, columns=['left_pupil','right_pupil','quad'])
+
+df = pd.DataFrame(data_list, columns=['quadrant','left_pupil','right_pupil','gaze_center','nose_end_points',
+                                      'gaze_direction_points','rotation_vector','translation_Vector'])
 df.to_csv("myrecorded_data.csv")
