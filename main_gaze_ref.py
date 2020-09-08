@@ -66,7 +66,7 @@ while True:
 
         cv2.line(frame, (0, w/2), (w, h/2), (0, 255, 0), 2)
         cv2.line(frame, h/2, 0), w/2, h), (0, 255, 0), 2)
-        cv2.putText(frame, "Left pupil:  " + str(left_pupil), (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
+        cv2.putText(frame, "Left pupil:  " + str(left_pupil), (90`, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
         cv2.putText(frame, "Right pupil: " + str(right_pupil), (90, 165), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
 
         cv2.imshow("Demo", frame)
