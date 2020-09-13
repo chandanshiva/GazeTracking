@@ -3,13 +3,13 @@
 ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)
 ![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-[![GitHub stars](https://img.shields.io/github/stars/antoinelame/GazeTracking.svg?style=social)](https://github.com/antoinelame/GazeTracking/stargazers)
+[![Resource](https://img.shields.io/github/stars/antoinelame/GazeTracking.svg?style=social)](https://github.com/antoinelame/GazeTracking)
 
-This is a Python (2 and 3) library that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time.
+This API was built by antoinelame is a Python (2 and 3) library that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time. It is integrated with head pose estimation, it gives Gaze data with gaze direction data.
 
 [![Demo](https://i.imgur.com/WNqgQkO.gif)](https://youtu.be/YEZMk1P0-yw)
-
-_🚀 Quick note: I'm looking for job opportunities as a software developer, for exciting projects in ambitious companies. Anywhere in the world. Send me an email!_
+ 
+ Please follow the steps to setup
 
 ## Installation
 
@@ -19,7 +19,7 @@ Clone this project:
 git clone https://github.com/antoinelame/GazeTracking.git
 ```
 
-Install these dependencies (NumPy, OpenCV, Dlib):
+Install these dependencies (NumPy, OpenCV, Dlib,..):
 
 ```
 pip install -r requirements.txt
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 Run the demo:
 
 ```
-python example.py
+python main.py
 ```
 
 ## Simple Demo
@@ -147,11 +147,38 @@ frame = gaze.annotated_frame()
 
 Returns the main frame with pupils highlighted.
 
+## Head Pose Estimation
+
+```python
+(success, rotation_vector, translation_vector) = cv2.solvePnP(model_points, image_points,
+                                                                      cam_matrix, dist_coeffs,
+                                                                      flags=cv2.SOLVEPNP_ITERATIVE)
+```
+
+Returns 3D object point's position with respect to the Camera position using 2D facial landmark points from Dlib
+
+```python
+(nose_end_point2D, jacobian) = cv2.projectPoints(np.array([(0.0, 0.0, 1000.0)]), rotation_vector,
+                                                         translation_vector,
+                                                         cam_matrix, dist_coeffs)
+```
+
+Projects a Jacobian matrix points with respect to rotation and transition direction to draw a line of direction
+ 
+## Head Pose Estimation
+
+```python
+df = pd.DataFrame(data_list, columns=['quadrant','left_pupil','right_pupil','gaze_center_x', 'gaze_center_y', 'nose_end_points',
+                                      'gaze_end_points'])
+df.to_csv("myrecorded_data.csv")
+```
+
+Selecting the data to record for analysis
+
+
 ## You want to help?
 
-Your suggestions, bugs reports and pull requests are welcome and appreciated. You can also starring ⭐️ the project!
-
-If the detection of your pupils is not completely optimal, you can send me a video sample of you looking in different directions. I would use it to improve the algorithm.
+Your feedback and suggestions are welcome and appreciated.
 
 ## Licensing
 
