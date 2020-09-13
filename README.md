@@ -6,7 +6,7 @@
 
 This API was built by antoinelame is a Python (2 and 3) library that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time. It is integrated with head pose estimation, it gives Gaze data with gaze direction data.
 
-[![Demo](https://i.imgur.com/WNqgQkO.gif)](https://www.loom.com/share/e80c6fd4eb304f3ba29a98537fc4d456)
+[![Demo](https://gitlab.comp.dkit.ie/D00225825/dissertationgazetracking/-/blob/master/2020-09-13_21-04-20.gif)](https://www.loom.com/share/e80c6fd4eb304f3ba29a98537fc4d456)
  
  Please follow the steps to setup
 
