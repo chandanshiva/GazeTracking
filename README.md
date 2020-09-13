@@ -14,7 +14,7 @@ This API was built by antoinelame is a Python (2 and 3) library that provides a 
 Clone this project:
 
 ```
-git clone https://github.com/antoinelame/GazeTracking.git
+git clone https://gitlab.comp.dkit.ie/D00225825/dissertationgazetracking
 ```
 
 Install these dependencies (NumPy, OpenCV, Dlib,..):
