@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-face_classifier = cv2.CascadeClassifier('Resources/haarcascade_frontalface_default.xml')
-eye_classifier = cv2.CascadeClassifier('Resources/haarcascade_eye.xml')
+face_classifier = cv2.CascadeClassifier('Understanding Gaze Detection/Resources/haarcascade_frontalface_default.xml')
+eye_classifier = cv2.CascadeClassifier('Understanding Gaze Detection/Resources/haarcascade_eye.xml')
 
 def face_detector(img, size=0.5):
     # Convert image to grayscale
