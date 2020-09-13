@@ -135,22 +135,22 @@ while True:
         if 0 < end_nose_x < center_nose_x and 0 < end_nose_y < center_nose_y:
             print("Looking at 1st")
             cv2.putText(frame, "You are looking on 1st grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
-            data_list.append(['1st', left_pupil, right_pupil, (center_x,center_y), p1, p2, rotation_vector, translation_vector])
+            data_list.append(['1st', left_pupil, right_pupil, center_x, center_y, p1, p2])
 
         elif center_nose_x < end_nose_x < (w*10) and 0 < end_nose_y < center_nose_y:
             print("looking at 2nd")
             cv2.putText(frame, "You are looking on 2nd grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
-            data_list.append(['2nd', left_pupil, right_pupil, (center_x, center_y), p1, p2, rotation_vector, translation_vector])
+            data_list.append(['2nd', left_pupil, right_pupil, center_x, center_y, p1, p2])
 
         elif 0 < end_nose_x < center_nose_x and center_nose_y < end_nose_y < (h*10):
             print("looking at 4th")
             cv2.putText(frame, "You are looking on 4th grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
-            data_list.append(['4th', left_pupil, right_pupil, (center_x, center_y), p1, p2, rotation_vector, translation_vector])
+            data_list.append(['4th', left_pupil, right_pupil, center_x, center_y, p1, p2])
 
         else:
             print("looking at 3rd")
             cv2.putText(frame, "You are looking on 3rd grid", (90, 200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (0, 0, 0), 1)
-            data_list.append(['3rd', left_pupil, right_pupil, (center_x, center_y), p1, p2, rotation_vector, translation_vector])
+            data_list.append(['3rd', left_pupil, right_pupil, center_x, center_y, p1, p2])
 
 
         cv2.line(frame, (0, int(center_nose_y)), (w, int(center_nose_y)), (0, 255, 0), 2)
@@ -165,6 +165,6 @@ while True:
         if cv2.waitKey(1) == 27:
             break
 
-df = pd.DataFrame(data_list, columns=['quadrant','left_pupil','right_pupil','gaze_center','nose_end_points',
-                                      'gaze_direction_points','rotation_vector','translation_Vector'])
+df = pd.DataFrame(data_list, columns=['quadrant','left_pupil','right_pupil','gaze_center_x', 'gaze_center_y', 'nose_end_points',
+                                      'gaze_end_points'])
 df.to_csv("myrecorded_data.csv")
