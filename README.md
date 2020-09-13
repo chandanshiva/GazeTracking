@@ -1,4 +1,4 @@
-# Gaze Tracking
+# Gaze Tracking with Head Pose Estimation
 
 ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)
 ![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
@@ -164,7 +164,7 @@ Returns 3D object point's position with respect to the Camera position using 2D 
 
 Projects a Jacobian matrix points with respect to rotation and transition direction to draw a line of direction
  
-## Head Pose Estimation
+## Data Aggregation
 
 ```python
 df = pd.DataFrame(data_list, columns=['quadrant','left_pupil','right_pupil','gaze_center_x', 'gaze_center_y', 'nose_end_points',
