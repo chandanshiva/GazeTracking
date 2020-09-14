@@ -2,9 +2,8 @@
 
 ![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)
 ![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-This API was built by antoinelame is a Python (2 and 3) library that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time. It is integrated with head pose estimation, it gives Gaze data with gaze direction data.
+The base API was built by antoinelame is a Python (2 and 3) library that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time. It is integrated with head pose estimation, it gives Gaze data with gaze direction data.
 
  
  Please follow the steps to setup
@@ -177,7 +176,3 @@ Selecting the data to record for analysis
 ## You want to help?
 
 Your feedback and suggestions are welcome and appreciated.
-
-## Licensing
-
-This project is released by Antoine Lamé under the terms of the MIT Open Source License. View LICENSE for more information.
